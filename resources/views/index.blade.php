@@ -126,6 +126,7 @@ function get(){
     for(i=0;i<4;i++){
       $(".level"+i).html(data.title[i]+'('+data.count[i]+'/'+data.sum[i]+')');
       $(".level"+i).removeClass("am-btn-primary");
+      $(".level"+i).addClass("am-btn-default");
       if(data.count[i]>0 && default_class){
         $(".level"+i).addClass("am-btn-primary");
         default_class=false;
