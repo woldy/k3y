@@ -12,9 +12,12 @@
 */
 
 $router->get('/', function () use ($router) {
-    return $router->app->version();
+    return view('index');
 });
 
 
 $router->get('xinao', 'XinaoController@index');
 $router->get('xinao/get', 'XinaoController@get');
+$router->get('xinao/pass', 'XinaoController@pass');
+
+$router->get('xinao/count', 'XinaoController@get_count');

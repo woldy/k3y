@@ -45,6 +45,14 @@
   .am-panel-bd{
     padding: 10px;
   }
+
+  .back{
+    float: right;
+    font-size: 16px;
+    font-family: microsoft yahei;
+  }
+
+
   </style>
 </head>
 <body>
@@ -53,8 +61,8 @@
 
 
 
-<div class="am-panel am-panel-default">
-  <div class="am-panel-hd">洗脑模式</div>
+<div class="am-panel am-panel-primary">
+  <div class="am-panel-hd"><span class="am-icon-home back">Back</span><span class='title'>洗脑模式</span></div>
   <div class="am-panel-bd">
     <div class="word">
 	  </div>
@@ -102,7 +110,8 @@
   </div>
 </div>
 
-<button type="button" onclick="window.location.reload()" class="am-btn am-btn-default am-btn-block">下一词</button>
+<button type="button" id='btn-pass' word='woldy'  class="am-btn am-btn-primary am-btn-block">我感觉我记住了</button>
+<button type="button" onclick="next()" class="am-btn am-btn-default am-btn-block">下一词</button>
 <br />
 <audio  id="audio" controls="controls" style='width:100%' ><source src='http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text=b,e,l,i,e,v,e,' type="audio/mpeg"></audio>
 
@@ -147,17 +156,53 @@ audio.onended = function() {
   }
 }
 
+$(".back").click(function(){
+  window.location.href='/?name=<?php echo $name;?>';
+})
+
+$("#btn-pass").click(function(){
+  $.get("/xinao/pass?level="+"<?php echo $level;?>&name="+"<?php echo $name;?>&word="+$(this).attr('word'),function(data,status){
+    next();
+  });
+});
+
+
+function next(){
+    list=[];
+    audio.pause();
+    get();
+}
 
 function get(){
-  $.get("/xinao/get",function(data,status){
-    $('.word').html(data.word);
-    $('.mean').html(data.mean);
+  $.get("/xinao/get?level="+"<?php echo $level;?>&name="+"<?php echo $name;?>",function(data,status){
+    if(data.errcode==1){
+      window.location.href='/?name=<?php echo $name;?>';
+    }
+    $('.word').html(data.word.word);
+    $('.mean').html(data.word.mean);
+    $('#btn-pass').attr('word',data.word.word);
+    $('.title').html("洗脑模式-"+data.title[<?php echo $level;?>]+'-'+'<?php echo $name;?>'+'-'+data.count[<?php echo $level;?>]+'/'+data.sum[<?php echo $level;?>]);
+
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.mean.replace(/<[^>]+>/g,""));
+    //list.push("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
 
     for(i=0;i<3;i++){
-      if(typeof(data.sentences[i])!='undefined'){
-          $('.ss'+i).html(data.sentences[i].sentence);
-          $('.st'+i).html(data.sentences[i].translate);
-          $('.sy'+i).html(data.sentences[i].year);
+      if(typeof(data.word.sentences[i])!='undefined'){
+          $('.ss'+i).html(data.word.sentences[i].sentence);
+          $('.st'+i).html(data.word.sentences[i].translate);
+          $('.sy'+i).html(data.word.sentences[i].year);
+
+          list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
+          list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.sentences[i].translate);
+          list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
+
           $('.sc'+i).show();
       }else{
         $('.sc'+i).hide();
@@ -165,33 +210,14 @@ function get(){
     }
 
 
-    
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.mean.replace(/<[^>]+>/g,""));
-    //list.push("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.sentences[0].sentence.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.sentences[0].translate);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.sentences[0].sentence.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.sentences[1].sentence.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.sentences[1].translate);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.sentences[1].sentence.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.sentences[2].sentence.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.sentences[2].translate);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.sentences[2].sentence.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.mean.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.mean.replace(/<[^>]+>/g,""));
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
 
 
 

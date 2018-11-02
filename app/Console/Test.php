@@ -35,7 +35,7 @@ class Test extends Command
               }
             }
 
-            $wlist[$word['level']][]=$word;
+            $wlist[$word['level']][$word['word']]=$word;
           }
 
           Cache::forever('wlist',$wlist);
