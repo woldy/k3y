@@ -72,6 +72,8 @@
 
   </div>
 </div>
+<audio  id="audio" controls="controls" style='width:100%' ><source src='http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text=b,e,l,i,e,v,e,' type="audio/mpeg"></audio>
+
 
 <div class="am-panel am-panel-default sc0">
   <div class="am-panel-hd sy0"></div>
@@ -113,7 +115,6 @@
 <button type="button" id='btn-pass' word='woldy'  class="am-btn am-btn-primary am-btn-block">我感觉我记住了</button>
 <button type="button" onclick="next()" class="am-btn am-btn-default am-btn-block">下一词</button>
 <br />
-<audio  id="audio" controls="controls" style='width:100%' ><source src='http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text=b,e,l,i,e,v,e,' type="audio/mpeg"></audio>
 
    <footer data-am-widget="footer"
           class="am-footer am-footer-default"
