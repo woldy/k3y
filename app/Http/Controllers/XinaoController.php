@@ -85,7 +85,7 @@ class XinaoController extends Controller
 	'review'=>'false'
       ];
       if(count($review)>0){
-	$res['count'][$level]=count($review);
+	$res['count'][$level]=count($wlist[$level]);
 	$res['review']='true';
       }
       return response()->json($res);
