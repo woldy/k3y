@@ -55,6 +55,7 @@ class XinaoController extends Controller
       }
       
       if(empty($wlist[$level])){
+	$review=[];
         $wlist=Cache::get('wlist_'.$name);
         if(empty($wlist)){
           $wlist=Cache::get('wlist');
