@@ -1,0 +1,7 @@
+stages:
+- name: Build
+  steps:
+  - runScriptConfig:
+      image: composer
+      shellScript: composer update
+timeout: 60
