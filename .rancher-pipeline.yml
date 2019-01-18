@@ -3,5 +3,15 @@ stages:
   steps:
   - runScriptConfig:
       image: composer
-      shellScript: composer update
+      shellScript: |-
+        composer config -g repo.packagist composer https://packagist.phpcomposer.com
+        composer update
+- name: Push
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: test/k3y
+      pushRemote: true
+      registry: harbor.zhiyinlou.com
 timeout: 60
