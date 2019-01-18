@@ -1,9 +1,15 @@
 <?php
-   $url='https://apollo.zhiyinlou.com/openapi/v1/envs/dev/apps/apollo_demo_key/clusters/default/namespaces/application';
+   $env=$argv[1];
+   $app=$argv[2];
+   $namespace=$argv[3];
+   $key=$argv[4];
+
+   $url='https://apollo.zhiyinlou.com/openapi/v1/envs/{$env}/apps/{$app}/clusters/default/namespaces/{$namespace}';
    $headers = array(
-                 'Authorization:'.'8f7927f490f4d18fa348fa8e937973a974a13118',
+                 'Authorization:'.$key,
                  'Content-Type:'.'application/json;charset=UTF-8',
    );
+
    $curl = curl_init();
    curl_setopt($curl, CURLOPT_URL, $url);
    curl_setopt($curl, CURLOPT_HEADER, 0);
