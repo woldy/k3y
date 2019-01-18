@@ -17,7 +17,7 @@ class Test extends Command
     }
 
     public function handle(){
-      $this->trans_sentence();
+      //$this->trans_sentence();
       $this->build_cache();
     }
 
