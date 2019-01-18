@@ -3,7 +3,9 @@ stages:
   steps:
   - runScriptConfig:
       image: composer
-      shellScript: composer update
+      shellScript: |-
+        composer config -g repo.packagist composer https://packagist.phpcomposer.com
+        composer update
 - name: Push
   steps:
   - publishImageConfig:
