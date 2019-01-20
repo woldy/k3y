@@ -8,4 +8,4 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 RUN rmdir  /app
 COPY / /app
 RUN chmod -R 777 /app/bootstrap && chmod -R 777 /app/storage
-RUN /usr/local/bin/php /app/apollo.php $APOLLO_ENV $APOLLO_APP $APOLLO_NAMESPACE $APOLLO_KEY
+ENTRYPOINT ["/bin/bash","-c","/usr/local/bin/php /app/apollo.php $APOLLO_ENV $APOLLO_APP $APOLLO_NAMESPACE $APOLLO_KEY"]

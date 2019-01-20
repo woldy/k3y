@@ -1,3 +1,4 @@
+#!/usr/local/bin/php
 <?php
    $env=$argv[1];
    $app=$argv[2];
@@ -31,3 +32,11 @@
         file_put_contents(trim($config_file[1]),$config_list[trim($config_file[0])]);
 
    }
+  
+  while (true) {
+	sleep(10);
+  }
+
+
+//docker run -d --env  "APOLLO_ENV=dev APOLLO_APP=apollo_demo_key APOLLO_NAMESPACE=application APOLLO_KEY=9c966762a0a0fc940c39c70f37f5bfce1f142e29" k3y
+
