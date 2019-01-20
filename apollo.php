@@ -37,6 +37,5 @@
 	sleep(10);
   }
 
-
-//docker run -d --env  "APOLLO_ENV=dev APOLLO_APP=apollo_demo_key APOLLO_NAMESPACE=application APOLLO_KEY=9c966762a0a0fc940c39c70f37f5bfce1f142e29" k3y
+//docker run -d -e "APOLLO_ENV=dev" -e "APOLLO_APP=apollo_demo_key" -e "APOLLO_NAMESPACE=application" -e "APOLLO_KEY=9c966762a0a0fc940c39c70f37f5bfce1f142e29" k3y
 
