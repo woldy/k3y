@@ -7,5 +7,6 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
 && echo 'Asia/Shanghai' >/etc/timezone
 RUN rmdir  /app
 COPY / /app
-RUN chmod -R 777 /app/bootstrap && chmod -R 777 /app/storage
-ENTRYPOINT ["/bin/bash","-c","/usr/local/bin/php /app/apollo.php $APOLLO_ENV $APOLLO_APP $APOLLO_NAMESPACE $APOLLO_KEY"]
+RUN echo  "/usr/local/bin/php /app/apollo.php $APOLLO_ENV $APOLLO_APP $APOLLO_NAMESPACE $APOLLO_KEY" > /entrypoint.d/apollo.sh
+RUN chmod -R 777 /app/bootstrap && chmod -R 777 /app/storage && chmod 777 /entrypoint.d/apollo.sh
+#ENTRYPOINT ["/bin/bash","-c","/usr/local/bin/php /app/apollo.php $APOLLO_ENV $APOLLO_APP $APOLLO_NAMESPACE $APOLLO_KEY"]
