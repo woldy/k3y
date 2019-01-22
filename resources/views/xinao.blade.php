@@ -24,7 +24,7 @@
   <meta name="apple-mobile-web-app-title" content="Amaze UI"/>
   <meta name="msapplication-TileColor" content="#0e90d2">
 
-  <link rel="stylesheet" href="http://cdn.amazeui.org/amazeui/2.7.2/css/amazeui.min.css">
+  <link rel="stylesheet" href="https://cdn.bootcss.com/amazeui/2.7.2/css/amazeui.min.css">
 
   <style>
 	.word{
@@ -128,8 +128,8 @@
 
 
 
-<script src="http://libs.baidu.com/jquery/1.11.3/jquery.min.js"></script>
-<script src="http://cdn.amazeui.org/amazeui/2.7.2/js/amazeui.min.js"></script>
+<script src="https://cdn.bootcss.com/jquery/1.12.2/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
 
 
 
