@@ -21,3 +21,9 @@ $router->get('xinao/get', 'XinaoController@get');
 $router->get('xinao/pass', 'XinaoController@pass');
 
 $router->get('xinao/count', 'XinaoController@get_count');
+
+
+$router->get('test/mysql/write', 'TestController@mysql_write');
+$router->get('test/mysql/read', 'TestController@mysql_read');
+$router->get('test/redis/write', 'TestController@redis_write');
+$router->get('test/mysql/read', 'TestController@redis_read');
