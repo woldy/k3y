@@ -29,7 +29,7 @@ class TestController extends Controller
 
   function mysql_read(){
     $word=DB::table('word')->where('id',1)->first();
-    $res=['errcode'=>0,'errmsg'=>$word];
+    $res=['errcode'=>123,'errmsg'=>$word];
     return response()->json($res);
   }
 
