@@ -13,5 +13,6 @@ stages:
       buildContext: .
       tag: test/k3y
       pushRemote: true
-      registry: harbor.zhiyinlou.com
+      registry: harbor.woldy.net:8001
 timeout: 60
+notification: {}
