@@ -12,7 +12,6 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: test/k3y
-      pushRemote: true
       registry: harbor.woldy.net:8001
 timeout: 60
 notification: {}
