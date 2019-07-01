@@ -4,8 +4,8 @@ stages:
   - runScriptConfig:
       image: composer
       shellScript: |-
-        composer config repo.packagist composer https://packagist.laravel-china.org
-        composer update
+        #composer config repo.packagist composer https://packagist.laravel-china.org
+        #composer update
 - name: Push
   steps:
   - publishImageConfig:
