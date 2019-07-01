@@ -2,7 +2,7 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: composer
+      image: php:latest
       shellScript: |-
         composer config repo.packagist composer https://packagist.laravel-china.org
         composer update
@@ -12,6 +12,7 @@ stages:
       dockerfilePath: ./Dockerfile
       buildContext: .
       tag: test/k3y
+      pushRemote: true
       registry: harbor.woldy.net:8001
 timeout: 60
 notification: {}
