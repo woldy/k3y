@@ -2,7 +2,7 @@ stages:
 - name: Build
   steps:
   - runScriptConfig:
-      image: php:latest
+      image: composer
       shellScript: |-
         composer config repo.packagist composer https://packagist.laravel-china.org
         composer update
