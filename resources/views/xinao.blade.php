@@ -150,9 +150,9 @@ var audio = document.getElementById('audio');
 audio.onended = function() {
   //console.log(list);
   if(list.length==0){
-    get();
+    setTimeout('get();',500);
   }else{
-    setTimeout('play(list.shift());',10);
+    setTimeout('play(list.shift());',1000);
 
   }
 }
