@@ -43,7 +43,7 @@ class XinaoController extends Controller
       $name=$request->get('name','guest');
 
 
-      $review=DB::table('pass')->where('name',$name)->where('next','<',time())->get()->toArray();
+      $review=DB::table('pass')->where('level',$level)->where('name',$name)->where('next','<',time())->get()->toArray();
       if(count($review)>0){
         $wlist=[[],[],[],[]];
         $idx=Cache::get('wlist');
@@ -59,7 +59,6 @@ class XinaoController extends Controller
           Cache::forever('wlist_'.$name,$wlist);
         }
       }
-
 
 
       if(empty($wlist[$level])){
