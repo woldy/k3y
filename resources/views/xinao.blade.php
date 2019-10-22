@@ -72,7 +72,7 @@
 
   </div>
 </div>
-<audio  id="audio" controls="controls" style='width:100%' ><source src='http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text=b,e,l,i,e,v,e,' type="audio/mpeg"></audio>
+<audio  id="audio" controls="controls" style='width:100%' ><source src='https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text=b,e,l,i,e,v,e,' type="audio/mpeg"></audio>
 
 
 <div class="am-panel am-panel-default sc0">
@@ -184,15 +184,16 @@ function get(){
     $('#btn-pass').attr('word',data.word.word);
     $('.title').html("洗脑模式-"+data.title[<?php echo $level;?>]+'-'+'<?php echo $name;?>'+'-'+data.count[<?php echo $level;?>]+'/'+data.sum[<?php echo $level;?>]);
 
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.mean.replace(/<[^>]+>/g,""));
+  //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+  //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+  //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.mean.replace(/<[^>]+>/g,""));
     //list.push("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+  //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+   // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+   // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word);
 
     for(i=0;i<3;i++){
       if(typeof(data.word.sentences[i])!='undefined'){
@@ -200,9 +201,9 @@ function get(){
           $('.st'+i).html(data.word.sentences[i].translate);
           $('.sy'+i).html(data.word.sentences[i].year);
 
-          list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
-          list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.sentences[i].translate);
-          list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
+          list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
+          list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.sentences[i].translate);
+          list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
 
           $('.sc'+i).show();
       }else{
@@ -211,16 +212,14 @@ function get(){
     }
 
 
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.mean.replace(/<[^>]+>/g,""));
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word.split('').join()+',');
-    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
-
-
+    //list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+   // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.mean.replace(/<[^>]+>/g,""));
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+   // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+   // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
 
 
 	play(list.shift());
@@ -238,7 +237,7 @@ function play(src){
       playPromise.then(() => {
           setTimeout(() => {
               //console.log("done.");
-          }, audio.duration * 1000); // audio.duration 为音频的时长单位为秒
+          }, audio.duration * 2000); // audio.duration 为音频的时长单位为秒
       }).catch((e) => {
       });
   }
