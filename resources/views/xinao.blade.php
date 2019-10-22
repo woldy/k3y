@@ -202,7 +202,7 @@ function get(){
           $('.st'+i).html(data.word.sentences[i].translate);
           $('.sy'+i).html(data.word.sentences[i].year);
 
-          list.push("https://fanyi.sogou.com/reventondc/synthesis?speed=1&lang=en&from=translateweb&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
+    //----      list.push("https://fanyi.sogou.com/reventondc/synthesis?speed=1&lang=en&from=translateweb&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
           //list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.sentences[i].translate);
           //list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.sentences[i].sentence.replace(/<[^>]+>/g,""));
 

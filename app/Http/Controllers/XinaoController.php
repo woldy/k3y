@@ -46,11 +46,15 @@ class XinaoController extends Controller
       $review=DB::table('pass')->where('level',$level)->where('name',$name)->where('next','<',time())->get()->toArray();
       if(count($review)>0){
         $wlist=[[],[],[],[]];
+	$review_count=[0,0,0,0];
         $idx=Cache::get('wlist');
         foreach ($review as $word) {
           if(isset($idx[$word['level']][$word['word']])){
             array_unshift($wlist[$word['level']],$idx[$word['level']][$word['word']]);
           }
+		if($word['level']==$level){
+			$review_count[$word['level']]++;
+		}
         }
       }else{
         $wlist=Cache::get('wlist_'.$name);
@@ -78,8 +82,8 @@ class XinaoController extends Controller
         'word'=>$word,
         'level'=>$level,
         'title'=>$this->title,
-        'sum'=>$this->sum,
-        'count'=>$this->count($name)
+        'sum'=>$review_count??$this->sum,
+        'count'=>$review_count??$this->count($name)
       ];
       return response()->json($res);
     }
