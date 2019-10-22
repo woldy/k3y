@@ -186,12 +186,13 @@ function get(){
 
   //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
   //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
-    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+//    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
   //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.mean.replace(/<[^>]+>/g,""));
     //list.push("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
-    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
-  //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
-    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/synthesis?speed=1&lang=en&from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/synthesis?speed=1&lang=en&from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/synthesis?speed=1&lang=en&from=translateweb&text="+data.word.word);
+  //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+'"+data.word.word);
    // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
    // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word);
 
