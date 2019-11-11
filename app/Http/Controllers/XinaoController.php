@@ -41,7 +41,7 @@ class XinaoController extends Controller
     public function get(Request $request){
       $level=$request->get('level',0);
       $name=$request->get('name','guest');
-
+      $m='';
 
       $review=DB::table('pass')->where('level',$level)->where('name',$name)->where('next','<',time())->get()->toArray();
       if(count($review)>0){

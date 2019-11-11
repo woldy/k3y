@@ -175,12 +175,16 @@ function next(){
 }
 
 function get(){
+
+	
   $.get("/xinao/get?level="+"<?php echo $level;?>&name="+"<?php echo $name;?>",function(data,status){
     if(data.errcode==1){
       window.location.href='/?name=<?php echo $name;?>';
     }
     $('.word').html(data.word.word);
-    $('.mean').html(data.word.mean);
+	$(".mean").css("color","white");
+	$(".mean").html(data.word.mean);
+    setTimeout('$(".mean").css("color","#333");',2000);
     $('#btn-pass').attr('word',data.word.word);
     $('.title').html("洗脑模式-"+data.title[<?php echo $level;?>]+'-'+'<?php echo $name;?>'+'-'+data.count[<?php echo $level;?>]+'/'+data.sum[<?php echo $level;?>]);
 
