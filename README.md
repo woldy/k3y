@@ -11,5 +11,5 @@
 * 使用前需要 php artisan test 初始化一下
 
 
-![.](https://raw.githubusercontent.com/woldy/k3y/dd1425d9ece9c697d1a205c63382beabe0bb334c/resources/views/screenshot.png)
+![.](https://raw.githubusercontent.com/woldy/k3y/master/resources/screenshot/screenshot.png)
 ![.](https://raw.githubusercontent.com/woldy/k3y/dd1425d9ece9c697d1a205c63382beabe0bb334c/resources/views/mshot.jpg)
