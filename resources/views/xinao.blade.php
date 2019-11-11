@@ -132,16 +132,6 @@
 <script src="https://cdn.bootcss.com/amazeui/2.7.2/js/amazeui.min.js"></script>
 
 
-
-
-
-
-
-
-
-
-
-
 <script>
 
 get();
@@ -150,7 +140,11 @@ var audio = document.getElementById('audio');
 audio.onended = function() {
   //console.log(list);
   if(list.length==0){
+<<<<<<< HEAD
     setTimeout('get();',500);
+=======
+    setTimeout('get();',3000);
+>>>>>>> ed5f132a54a934f3ac5551d9a7b39872307d0c82
   }else{
     setTimeout('play(list.shift());',1000);
 
@@ -186,8 +180,12 @@ function get(){
 	$(".mean").html(data.word.mean);
     setTimeout('$(".mean").css("color","#333");',2000);
     $('#btn-pass').attr('word',data.word.word);
-    $('.title').html("洗脑模式-"+data.title[<?php echo $level;?>]+'-'+'<?php echo $name;?>'+'-'+data.count[<?php echo $level;?>]+'/'+data.sum[<?php echo $level;?>]);
+    	if(data.review=='true'){
+    		$('.title').html("洗脑模式-"+data.title[<?php echo $level;?>]+'-'+'<?php echo $name;?>'+'-'+data.count[<?php echo $level;?>]+'/'+data.count[<?php echo $level;?>]+'-复习');
+	}else{
+    		$('.title').html("洗脑模式-"+data.title[<?php echo $level;?>]+'-'+'<?php echo $name;?>'+'-'+data.count[<?php echo $level;?>]+'/'+data.sum[<?php echo $level;?>]);
 
+<<<<<<< HEAD
   //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
   //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
 //    list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=3&text="+data.word.word);
@@ -199,6 +197,19 @@ function get(){
   //  list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+'"+data.word.word);
    // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
    // list.push("https://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word);
+=======
+	}
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.mean.replace(/<[^>]+>/g,"").replace(/\([^\)]*\)/g,""));
+    //list.push("http://tts.baidu.com/text2audio?lan=en&ie=UTF-8&spd=5&text="+data.word.word.split('').join()+',');
+    //list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    //list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
+    //list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+    //list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&spokenDialect=zh-CHS&text="+data.word.word.split('').join()+',');
+    //list.push("https://fanyi.sogou.com/reventondc/microsoftGetSpeakFile?from=translateweb&text="+data.word.word);
+>>>>>>> ed5f132a54a934f3ac5551d9a7b39872307d0c82
 
     for(i=0;i<3;i++){
       if(typeof(data.word.sentences[i])!='undefined'){

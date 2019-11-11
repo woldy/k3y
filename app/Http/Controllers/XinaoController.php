@@ -56,14 +56,16 @@ class XinaoController extends Controller
 			$review_count[$word['level']]++;
 		}
         }
-      }else{
+      }
+      
+      if(empty($wlist[$level])){
+	$review=[];
         $wlist=Cache::get('wlist_'.$name);
         if(empty($wlist)){
           $wlist=Cache::get('wlist');
           Cache::forever('wlist_'.$name,$wlist);
         }
       }
-
 
       if(empty($wlist[$level])){
         $res=[
@@ -83,8 +85,13 @@ class XinaoController extends Controller
         'level'=>$level,
         'title'=>$this->title,
         'sum'=>$review_count??$this->sum,
-        'count'=>$review_count??$this->count($name)
+        'count'=>$review_count??$this->count($name),
+	'review'=>'false'
       ];
+      if(count($review)>0){
+	$res['count'][$level]=count($wlist[$level]);
+	$res['review']='true';
+      }
       return response()->json($res);
     }
 
