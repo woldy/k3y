@@ -19,9 +19,10 @@ $router->get('/', function () use ($router) {
 $router->get('xinao', 'XinaoController@index');
 $router->get('xinao/get', 'XinaoController@get');
 $router->get('xinao/pass', 'XinaoController@pass');
-
 $router->get('xinao/count', 'XinaoController@get_count');
 
+
+$router->get('writing', 'WritingController@index');
 
 $router->get('test/mysql/write', 'TestController@mysql_write');
 $router->get('test/mysql/read', 'TestController@mysql_read');
