@@ -13,3 +13,4 @@ https://k3y.woldy.net
 
 ![.](https://raw.githubusercontent.com/woldy/k3y/master/resources/screenshot/screenshot.png)
 ![.](https://raw.githubusercontent.com/woldy/k3y/dd1425d9ece9c697d1a205c63382beabe0bb334c/resources/views/mshot.jpg)
+[![TenryFancy](https://tenryfancy.com/logo.png)](https://tenryfancy.com)
